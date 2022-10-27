@@ -9,22 +9,24 @@
         <% const fecha = `${meeti.fecha} ${meeti.hora}` %>
         <p class="fecha"><%= moment(fecha).format('LLLL') %> Horas </p>
         <a href="/meeti/<%= meeti.slug %>">
-            <h3><%= meeti.titulo %></h3>
+            <h3><%= meeti.titulo %> </h3>
         </a>
         <div class="info-autor">
-            
-            <% if(usuario.imagen) { %>
+            <% if(meeti.usuario ) { %>
                 <div class="imagen">
-                    <img src="/uploads/perfiles/<%= usuario.imagen %>">
+                    <img src="/uploads/perfiles/<%= meeti.usuario.imagen %>">
                 </div>
-            <% } else {  %>
+            <% } else { %>
                 <div class="imagen">
-                    
+                    <img src="/img/meeti.jpg">
                 </div>
             <% } %>
+            
             <div class="informacion">
-                <p>Organizdo por:</p>
-                <p class="autor">Cristian Gonzalez</p>
+                <p>Organizado por:</p>
+                <% if(meeti.usuario) { %>
+                    <p class="autor"><%= meeti.usuario.nombre %></p>
+                <% } %>
             </div>
         </div>
     </div>
